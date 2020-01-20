@@ -46,6 +46,20 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  reset() {
+    setState(() {
+      currentNumber = 0;
+      previousNumber = 0;
+      currentOperation = null;
+    });
+  }
+
+  setCurrentOperation(operation) {
+    setState(() {
+      currentOperation = operation;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     print(currentNumber);
@@ -61,10 +75,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Text(
                     currentNumber.toString(),
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 65,
-                      fontWeight: FontWeight.w200
-                    ),
+                        color: Colors.white,
+                        fontSize: 65,
+                        fontWeight: FontWeight.w200),
                   ),
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.white, width: 3)),
@@ -80,9 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Expanded(
                         child: Row(
                           children: <Widget>[
-                            PadButton(
-                              text: 'C',
-                            ),
+                            PadButton(text: 'C', reset: reset),
                             PadButton(
                               text: '+/-',
                             ),
