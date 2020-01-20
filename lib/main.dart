@@ -60,11 +60,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Container(
                   child: Text(
                     currentNumber.toString(),
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 65,
+                      fontWeight: FontWeight.w200
+                    ),
                   ),
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.white, width: 3)),
                   width: MediaQuery.of(context).size.width,
+                  alignment: Alignment.bottomRight,
                 ),
               ),
               Expanded(
@@ -76,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Row(
                           children: <Widget>[
                             PadButton(
-                              text: 'AC',
+                              text: 'C',
                             ),
                             PadButton(
                               text: '+/-',
