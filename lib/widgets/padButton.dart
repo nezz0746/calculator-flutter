@@ -1,3 +1,4 @@
+import 'package:calculator/models/PadStyle.dart';
 import 'package:flutter/material.dart';
 
 class PadButton extends StatefulWidget {
@@ -10,23 +11,25 @@ class PadButton extends StatefulWidget {
   _PadButtonState createState() => _PadButtonState();
 }
 
+
 class _PadButtonState extends State<PadButton> {
-  pickColor(x) {
+  PadStyle pickColor(x) {
     switch (x) {
       case '÷':
       case 'x':
       case '-':
       case '+':
       case '=':
-        return Colors.orange;
-      case 'AC':
+        return PadStyle(backgroundColor: Colors.orange, color: Colors.white);
+      case 'C':
       case '+/-':
       case '%':
-        return Colors.grey;
+        return PadStyle(backgroundColor: Colors.grey, color: Colors.black);
       default:
-        return Color.fromRGBO(102, 102, 102, 1);
+        return PadStyle(backgroundColor: Color.fromRGBO(102, 102, 102, 1), color: Colors.white) ;
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -40,11 +43,15 @@ class _PadButtonState extends State<PadButton> {
             borderRadius: BorderRadius.circular(100),
           ),
           splashColor: Colors.white,
-          color: pickColor(widget.text),
+          color: pickColor(widget.text).backgroundColor,
           colorBrightness: Brightness.light,
           child: Text(
             widget.text,
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(
+              color: pickColor(widget.text).color,
+              fontSize: 25,
+              fontWeight: FontWeight.w400
+            ),
           ),
         ),
         height: MediaQuery.of(context).size.height,
