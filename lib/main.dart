@@ -30,10 +30,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int result = 0;
+  int previousNumber = 0;
+  int currentNumber = 0;
+  String currentOperation = null;
+
+  add(a, b) {
+    setState(() {
+      currentNumber = a + b;
+    });
+  }
+
+  input(number) {
+    setState(() {
+      currentNumber = (currentNumber * 10) + number;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    print(currentNumber);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(top: 40),
@@ -43,7 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
               Expanded(
                 flex: 1,
                 child: Container(
-                  child: Text('data'),
+                  child: Text(
+                    currentNumber.toString(),
+                    style: TextStyle(color: Colors.white),
+                  ),
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.white, width: 3)),
                   width: MediaQuery.of(context).size.width,
@@ -77,12 +95,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: <Widget>[
                             PadButton(
                               text: '7',
+                              appendNumber: input,
                             ),
                             PadButton(
                               text: '8',
+                              appendNumber: input,
                             ),
                             PadButton(
                               text: '9',
+                              appendNumber: input,
                             ),
                             PadButton(
                               text: 'x',
@@ -95,12 +116,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: <Widget>[
                             PadButton(
                               text: '4',
+                              appendNumber: input,
                             ),
                             PadButton(
                               text: '5',
+                              appendNumber: input,
                             ),
                             PadButton(
                               text: '6',
+                              appendNumber: input,
                             ),
                             PadButton(
                               text: '-',
@@ -113,12 +137,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: <Widget>[
                             PadButton(
                               text: '1',
+                              appendNumber: input,
                             ),
                             PadButton(
                               text: '2',
+                              appendNumber: input,
                             ),
                             PadButton(
                               text: '3',
+                              appendNumber: input,
                             ),
                             PadButton(
                               text: '+',
@@ -154,8 +181,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
           decoration: BoxDecoration(
-              color: Colors.black,
-              // border: Border.all(color: Colors.red, width: 3)
+            color: Colors.black,
+            // border: Border.all(color: Colors.red, width: 3)
           ),
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
