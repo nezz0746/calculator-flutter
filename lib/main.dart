@@ -67,6 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Padding(
         padding: const EdgeInsets.only(top: 40),
         child: Container(
+          padding: const EdgeInsets.only(left: 10, right: 10),
           child: Column(
             children: <Widget>[
               Expanded(
@@ -79,8 +80,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         fontSize: 65,
                         fontWeight: FontWeight.w200),
                   ),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white, width: 3)),
                   width: MediaQuery.of(context).size.width,
                   alignment: Alignment.bottomRight,
                 ),
@@ -190,8 +189,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ],
                   ),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white, width: 3)),
                   width: MediaQuery.of(context).size.width,
                 ),
               )
