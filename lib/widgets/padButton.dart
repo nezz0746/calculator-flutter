@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class PadButton extends StatefulWidget {
-  PadButton({Key key, String this.text}) : super(key: key);
+  PadButton({Key key, String this.text, this.appendNumber}) : super(key: key);
 
   final String text;
+  final appendNumber;
 
   @override
   _PadButtonState createState() => _PadButtonState();
@@ -26,14 +27,14 @@ class _PadButtonState extends State<PadButton> {
         return Color.fromRGBO(102, 102, 102, 1);
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
         child: FlatButton(
           onPressed: () {
-            print(widget.text);
+            widget.appendNumber(int.parse(widget.text));
           },
           shape: new RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(100),
