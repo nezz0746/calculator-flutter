@@ -158,6 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: <Widget>[
                             PadButton(
                               text: '0',
+                              appendNumber: input,
                             ),
                             PadButton(
                               text: '',
